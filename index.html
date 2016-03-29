@@ -112,7 +112,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/egret/" style="font-size: 10px;">egret</a> <a href="/tags/ztree/" style="font-size: 10px;">ztree</a> <a href="/tags/编程/" style="font-size: 20px;">编程</a>
+						<a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/egret/" style="font-size: 10px;">egret</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/ztree/" style="font-size: 10px;">ztree</a> <a href="/tags/编程/" style="font-size: 20px;">编程</a>
 					</div>
 				</section>
 				
@@ -191,6 +191,204 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-mongo" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/25/mongo/" class="article-date">
+  	<time datetime="2016-03-25T09:53:39.000Z" itemprop="datePublished">2016-03-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/25/mongo/">mongo</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>基础用法</p>
+</li>
+<li><p>ES6Promise ：</p>
+<p>var promise = Meetups.find({ tags: ‘javascript’ }).select(‘_id’).exec();</p>
+</li>
+</ol>
+<p>promise.then(function (meetups) {<br>  var ids = meetups.map(function (m) {<br>    return m._id;<br>  });<br>  return People.find({ meetups: { $in: ids }).exec();<br>}).then(function (people) {<br>  if (people.length &lt; 10000) {<br>    throw new Error(‘Too few people!!!’);<br>  } else {<br>    throw new Error(‘Still need more people!!!’);<br>  }<br>}).then(null, function (err) {<br>  assert.ok(err instanceof Error);<br>});</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-微信平台" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/08/微信平台/" class="article-date">
+  	<time datetime="2016-03-08T07:27:20.000Z" itemprop="datePublished">2016-03-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/08/微信平台/">微信平台</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>==============<br>有用的插件、ui：</p>
+<ol>
+<li><p>WeUI<br>为帮助网页开发者实现与微信客户端一致的视觉体验，并降低设计和开发成本，微信团队推出了网页设计样式库：WeUI。</p>
+</li>
+<li><p>微信 web 开发者工具<br>公众平台发布微信 web 开发者工具，可以在 PC 或 Mac 上模拟访问微信内网页，帮助开发者更方便地进行开发和调试。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-es6" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/07/es6/" class="article-date">
+  	<time datetime="2016-03-07T06:35:11.000Z" itemprop="datePublished">2016-03-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/07/es6/">es6</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>1.module<br>模块化</p>
+<p>AMD(提前执行):<br>代表【require.js】</p>
+<pre><code>define([<span class="string">'./a'</span>, <span class="string">'./b'</span>], <span class="function"><span class="keyword">function</span><span class="params">(a, b)</span> </span>{ <span class="comment">// 依赖必须一开始就写好</span>
+a.doSomething()
+<span class="comment">// ...</span>
+b.doSomething()
+<span class="comment">// ...</span>
+})
+</code></pre><p>CMD(延迟执行):CMD 推崇 as lazy as possible<br>代表【sea.js】</p>
+<pre><code>define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>) </span>{
+<span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">'./a'</span>)
+a.doSomething()
+<span class="comment">// ...</span>
+<span class="keyword">var</span> b = <span class="built_in">require</span>(<span class="string">'./b'</span>) <span class="comment">// 依赖可以就近书写</span>
+b.doSomething()
+<span class="comment">// ...</span>
+})
+</code></pre><p>CommonJS:require() 与 exports</p>
+<pre><code><span class="comment">// package/lib 是我们须要的一个依赖项</span>
+<span class="keyword">var</span> lib = <span class="built_in">require</span>(<span class="string">'package/lib'</span>);
+
+<span class="comment">// 我们的模块的一些行为</span>
+<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>{
+    lib.log(<span class="string">'hello world!'</span>);
+}
+
+<span class="comment">// 把 foo 导出（暴露）给其它模块</span>
+exports.foo = foo;
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es6/">es6</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-zTree" class="article article-type-post" itemscope itemprop="blogPost">
   
